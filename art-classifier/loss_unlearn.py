@@ -34,10 +34,10 @@ def unlearn_loss(data_dir, model, optimizer, batch_size, num_epochs):
     for i in range(num_epochs):
         train_loss, train_acc = train_unlearn_epoch(model, train_loader, optimizer)
         val_loss, val_acc = test(model, val_loader)
-        print("Train Loss (Unlearn):", train_loss)
-        print("Train Accuracy (Unlearn): ", train_acc)
-        print("Validation Loss (Unlearn): ", val_loss)
-        print("Validation Accuracy (Unlearn): ", val_acc)    
+    print("Train Loss (Unlearn):", train_loss)
+    print("Train Accuracy (Unlearn): ", train_acc)
+    print("Test Loss (Unlearn): ", val_loss)
+    print("Test Accuracy (Unlearn): ", val_acc)    
 
 def learn_loss(data_dir, model, optimizer, batch_size, num_epochs):
     train_data_transforms = train_transforms(size=(224, 224))
@@ -60,10 +60,10 @@ def learn_loss(data_dir, model, optimizer, batch_size, num_epochs):
     for i in range(num_epochs):
         train_loss, train_acc = train_learn_epoch(model, train_loader, optimizer)
         val_loss, val_acc = test(model, val_loader)
-        print("Train Loss (Learn):", train_loss)
-        print("Train Accuracy (Learn): ", train_acc)
-        print("Validation Loss (Learn): ", val_loss)
-        print("Validation Accuracy (Learn): ", val_acc) 
+    print("Train Loss (Learn):", train_loss)
+    print("Train Accuracy (Learn): ", train_acc)
+    print("Test Loss (Learn): ", val_loss)
+    print("Test Accuracy (Learn): ", val_acc) 
 
 def train_unlearn_epoch(model, train_loader, optimizer) -> Tuple[float, float]:
     model.train()
@@ -188,7 +188,7 @@ def main():
     optimizer = get_optimizer(my_resnet, optimizer_config)
     unlearn_loss(model=my_resnet, optimizer=optimizer, data_dir="./data/", batch_size=32, num_epochs=5)
     torch.save({'model_state_dict': my_resnet.state_dict(), 'optimizer_state_dict':optimizer.state_dict()}, './unlearn_art_loss_function_3.pt')
-    inference_loop_unlearn(data_dir="./data/", model=my_resnet, batch_size=32)
+    inference_loop_learn(data_dir="./data/", model=my_resnet, batch_size=32)
     
     #Stage 4
     print("Stage 4")
@@ -198,7 +198,7 @@ def main():
     optimizer = get_optimizer(my_resnet, optimizer_config)
     learn_loss(model=my_resnet, optimizer=optimizer, data_dir="./data/", batch_size=32, num_epochs=1)
     torch.save({'model_state_dict': my_resnet.state_dict(), 'optimizer_state_dict':optimizer.state_dict()}, './unlearn_art_loss_function_4.pt')
-    inference_loop_learn(data_dir="./data/", model=my_resnet, batch_size=32)
+    inference_loop_unlearn(data_dir="./data/", model=my_resnet, batch_size=32)
 
 if __name__ == "__main__":
     main()
