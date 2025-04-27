@@ -43,14 +43,14 @@ def learn_loss(data_dir, model, optimizer, batch_size, num_epochs):
     train_data_transforms = train_transforms(size=(224, 224))
     val_data_transforms = test_transforms(size=(224, 224))
     
-    train_dataset = ArtLoader(data_dir, split="train", transform=train_data_transforms, train_file="genre_train_with_dali.csv")
+    train_dataset = ArtLoader(data_dir, split="train", transform=train_data_transforms, train_file="genre_train_without_dali.csv")
 
     num_samples = 9600
     sampler = SubsetRandomSampler(indices=list(range(len(train_dataset)))[:num_samples])
     
     train_loader = DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
 
-    val_dataset = ArtLoader(data_dir, split="test", transform=val_data_transforms, test_file="genre_val_with_dali.csv")
+    val_dataset = ArtLoader(data_dir, split="test", transform=val_data_transforms, test_file="genre_val_without_dali.csv")
 
     num_samples = 4800
     sampler = SubsetRandomSampler(indices=list(range(len(val_dataset)))[:num_samples])
