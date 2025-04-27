@@ -1,3 +1,3 @@
-In our final project, we used multiple approaches to unlearning. We started with the CIFAR-10 starter code in NeurIPs Machine Unlearning competition in Kaggle: https://www.kaggle.com/competitions/neurips-2023-machine-unlearning
+In our final project, we used multiple approaches to unlearning. We started with the CIFAR-10 starter code in NeurIPS Machine Unlearning competition in Kaggle: https://www.kaggle.com/competitions/neurips-2023-machine-unlearning
 This served as a starting point for experimenting with our adversarial unlearning, and inspired the initial code for training the model conducting Membership Inference Attacks (MIAs). The starter kit from the competition
 with our unlearning process can be found in unlearning_CIFAR10.ipynb. Sections written by us are clearly marked as many of the evaluation and data loading sections were pre-supplied. 
