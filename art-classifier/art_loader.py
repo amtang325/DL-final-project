@@ -8,8 +8,6 @@ from PIL import Image
 import pandas as pd
 
 class ArtLoader(data.Dataset):
-    train_file = "genre_train.csv"
-    test_file = "genre_val.csv"
     class_labels = {
         "abstract_painting" : 0, 
         "cityscape" : 1, 
@@ -23,15 +21,15 @@ class ArtLoader(data.Dataset):
         "still_life" : 9
     }
 
-    def __init__(self, root_dir: str, split: str = "train", transform: torchvision.transforms.Compose = None):
+    def __init__(self, root_dir: str, split: str = "train", train_file: str = "genre_train.csv", test_file: str  = "genre_val.csv", transform: torchvision.transforms.Compose = None):
         self.root = os.path.expanduser(root_dir)
         self.transform = transform
         self.split = split
 
         if split == "train":
-            self.curr_file = os.path.join(root_dir, self.train_file)
+            self.curr_file = os.path.join(root_dir, train_file)
         elif split == "test":
-            self.curr_file = os.path.join(root_dir, self.test_file)
+            self.curr_file = os.path.join(root_dir, test_file)
 
         self.class_dict = self.class_labels
         self.dataset = self.art_with_genres()
