@@ -25,7 +25,7 @@ Make sure the folder structure looks like the following
 
 ## How to Run Our (baseline) Art Classifier
 
-1) Run code for model training or inference by typing python main.py in command line. If running training, comment out inference code. If running inference, comment out training code.
+1) Run code for model training or inference by typing python main.py in command line. If running training, comment out inference code. If running inference, comment out training code. The files art_loader.py, art_resnetpy, and trainer.py contain functions for data loading, the resnet model, and training/inference loop and are called in main.py. The file art-classifier-weights.pt contains our training weights for the art classifier.
 
 ## Approach 1: How to Run Our Adversarial Approach
 
@@ -36,3 +36,5 @@ with our unlearning process can be found in unlearning_CIFAR10.ipynb. Sections w
 2) The adversarial approach was then applied to the WikiArt dataset. The code for loading the art data, pre-training, and unlearning can be found in Unlearning.ipynb. After downloading WikiArt Data into the same root folder, run all cells to replicate results.
 
 ## Approach 2: How to Run Our Loss Function Approach
+
+1) Run the loss_unlearn python file. The file loss_unlearn_plot.ipynb contains our visualizations for this method.
