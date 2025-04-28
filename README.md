@@ -37,4 +37,9 @@ with our unlearning process can be found in unlearning_CIFAR10.ipynb. Sections w
 
 ## Approach 2: How to Run Our Loss Function Approach
 
-1) Run the loss_unlearn python file. The file loss_unlearn_plot.ipynb contains our visualizations for this method.
+1) Run the artist_split.py file to create two separate csvs for genre classification separated by our unlearn artist (Salvador Dalí)
+2) Now you can run the loss unlearning stages (this takes a couple hours so use nohup and caffeinate to log everything)
+```bash
+nohup caffeinate -i python3 -u loss_unlearn.py > loss_unlearn_final.log 2>&1 &
+```
+The file loss_unlearn_plot.ipynb contains our visualizations for this method.
